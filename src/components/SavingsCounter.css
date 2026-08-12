@@ -1,0 +1,83 @@
+.savings-counter {
+  text-align: center;
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-surface-border);
+  animation: scaleIn var(--transition-slow) ease;
+}
+
+.savings-counter__tabs {
+  display: inline-flex;
+  gap: 2px;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  margin-bottom: var(--space-6);
+}
+
+.savings-counter__tab {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 36px;
+}
+
+.savings-counter__tab--active {
+  background: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.savings-counter__value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.savings-counter__prefix {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+}
+
+.savings-counter__amount {
+  font-size: var(--font-size-4xl);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  animation: countUp var(--transition-slow) ease;
+}
+
+.savings-counter__value--positive .savings-counter__amount {
+  background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.savings-counter__value--negative .savings-counter__amount {
+  color: var(--color-danger-light);
+}
+
+.savings-counter__period {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.savings-counter__note {
+  margin-top: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-accent-light);
+  font-weight: 500;
+}

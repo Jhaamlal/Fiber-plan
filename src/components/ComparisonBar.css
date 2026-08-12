@@ -1,0 +1,40 @@
+.comparison-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  animation: fadeInUp var(--transition-slow) ease both;
+}
+
+.comparison-bar__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.comparison-bar__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.comparison-bar__track {
+  height: 28px;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+}
+
+.comparison-bar__fill {
+  height: 100%;
+  border-radius: var(--radius-sm);
+  transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  min-width: 4px;
+}
+
+.comparison-bar__value {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,247 @@
+.member-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  border: 1px solid var(--color-surface-border);
+  animation: fadeInUp var(--transition-slow) ease;
+  transition: border-color var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.member-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--operator-color, var(--color-primary));
+  opacity: 0.8;
+}
+
+.member-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.member-card__number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+.member-card__name {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  font-family: var(--font-family);
+  outline: none;
+  padding: var(--space-1) 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-base);
+}
+
+.member-card__name:focus {
+  border-bottom-color: var(--color-primary-light);
+}
+
+.member-card__name::placeholder {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.member-card__remove {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-danger-glow);
+  border: none;
+  color: var(--color-danger-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.member-card__remove:active {
+  transform: scale(0.9);
+  background: rgba(239, 68, 68, 0.3);
+}
+
+/* Operator Pills */
+.member-card__operators {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.member-card__operator-pill {
+  flex: 1;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-surface-hover);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 40px;
+}
+
+.member-card__operator-pill--active {
+  border-color: var(--pill-color);
+  background: var(--pill-bg);
+  color: var(--color-text);
+}
+
+.member-card__operator-pill:active {
+  transform: scale(0.96);
+}
+
+/* Plan Selector */
+.member-card__plan-selector {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-surface-border);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.member-card__plan-selector:active {
+  background: var(--color-surface-hover);
+}
+
+.member-card__plan-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.member-card__plan-price {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.member-card__plan-detail {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.member-card__chevron {
+  color: var(--color-text-muted);
+  transition: transform var(--transition-fast);
+}
+
+.member-card__chevron--open {
+  transform: rotate(180deg);
+}
+
+/* Plan List Dropdown */
+.member-card__plan-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+  animation: fadeIn var(--transition-fast) ease;
+}
+
+.member-card__plan-option {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  text-align: left;
+}
+
+.member-card__plan-option:active,
+.member-card__plan-option--selected {
+  background: var(--color-primary-glow);
+}
+
+.member-card__plan-option--selected {
+  border-left: 3px solid var(--color-primary);
+}
+
+.member-card__plan-option-price {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  min-width: 50px;
+}
+
+.member-card__plan-option-data {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.member-card__plan-option-validity {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* Monthly Cost */
+.member-card__cost {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-surface-border);
+}
+
+.member-card__cost-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.member-card__cost-value {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-danger-light);
+}
+
+.member-card__cost-validity {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}

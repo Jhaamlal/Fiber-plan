@@ -1,0 +1,74 @@
+.step-indicator {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--space-4) 0 var(--space-6);
+  position: relative;
+  animation: fadeIn var(--transition-slow) ease;
+}
+
+.step-indicator__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  position: relative;
+  flex: 1;
+}
+
+.step-indicator__circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  background: var(--color-surface);
+  border: 2px solid var(--color-surface-hover);
+  color: var(--color-text-muted);
+  transition: all var(--transition-base);
+  position: relative;
+  z-index: 2;
+}
+
+.step-indicator__circle--active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow-glow-primary);
+}
+
+.step-indicator__circle--completed {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+}
+
+.step-indicator__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+  font-weight: 500;
+  transition: color var(--transition-base);
+}
+
+.step-indicator__label--active {
+  color: var(--color-text);
+}
+
+.step-indicator__line {
+  position: absolute;
+  top: 18px;
+  left: calc(50% + 22px);
+  width: calc(100% - 44px);
+  height: 2px;
+  background: var(--color-surface-hover);
+  z-index: 1;
+  transition: background var(--transition-base);
+}
+
+.step-indicator__line--completed {
+  background: var(--color-accent);
+}
