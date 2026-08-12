@@ -1,9 +1,11 @@
 import { Plus, ArrowRight, Smartphone } from 'lucide-react';
 import MemberCard from './MemberCard';
 import { calculateTotalCurrentCost, formatCurrency } from '../utils/calculations';
+import { useLanguage } from '../context/LanguageContext';
 import './MemberInput.css';
 
 export default function MemberInput({ members, onMembersChange, onNext }) {
+  const { t } = useLanguage();
   const addMember = () => {
     if (members.length >= 10) return;
     onMembersChange([
@@ -36,7 +38,7 @@ export default function MemberInput({ members, onMembersChange, onNext }) {
     <div className="member-input">
       <div className="member-input__intro">
         <Smartphone size={20} className="member-input__intro-icon" />
-        <p>Add each phone in your household and select their current recharge plan.</p>
+        <p>{t('input.intro')}</p>
       </div>
 
       <div className="member-input__list">
@@ -55,7 +57,7 @@ export default function MemberInput({ members, onMembersChange, onNext }) {
       {members.length < 10 && (
         <button className="member-input__add" onClick={addMember}>
           <Plus size={20} />
-          <span>Add Another Phone</span>
+          <span>{t('input.add_phone')}</span>
         </button>
       )}
 
@@ -63,10 +65,10 @@ export default function MemberInput({ members, onMembersChange, onNext }) {
       <div className="member-input__total">
         <div className="member-input__total-row">
           <span className="member-input__total-label">
-            {members.length} phone{members.length > 1 ? 's' : ''} · Total monthly spend
+            {members.length} {members.length > 1 ? t('general.phones') : t('general.phone')} · {t('input.total_spend')}
           </span>
           <span className="member-input__total-value">
-            {formatCurrency(totalCost)}<span className="member-input__total-period">/mo</span>
+            {formatCurrency(totalCost)}<span className="member-input__total-period">{t('card.mo')}</span>
           </span>
         </div>
       </div>
@@ -77,8 +79,8 @@ export default function MemberInput({ members, onMembersChange, onNext }) {
         onClick={onNext}
         disabled={!hasPlans}
       >
-        <span>Choose BSNL Fiber Plan</span>
-        <ArrowRight size={18} />
+        <span>{t('input.next')}</span>
+        <ArrowRight size={20} />
       </button>
     </div>
   );

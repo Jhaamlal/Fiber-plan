@@ -2,9 +2,11 @@ import { X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { operators, getPlansForOperator } from '../data/plans';
 import { normalizeMonthlyCost, formatCurrency } from '../utils/calculations';
+import { useLanguage } from '../context/LanguageContext';
 import './MemberCard.css';
 
 export default function MemberCard({ member, index, onUpdate, onRemove, canRemove }) {
+  const { t } = useLanguage();
   const [showPlans, setShowPlans] = useState(false);
   const plans = getPlansForOperator(member.operator);
   const monthlyCost = member.plan
@@ -40,14 +42,14 @@ export default function MemberCard({ member, index, onUpdate, onRemove, canRemov
           type="text"
           value={member.name}
           onChange={(e) => onUpdate({ ...member, name: e.target.value })}
-          placeholder={`Phone ${index + 1}`}
+          placeholder={`${t('card.phone')} ${index + 1}`}
           maxLength={20}
         />
         {canRemove && (
           <button
             className="member-card__remove"
             onClick={onRemove}
-            aria-label="Remove member"
+            aria-label={t('card.remove')}
           >
             <X size={16} />
           </button>
@@ -87,11 +89,11 @@ export default function MemberCard({ member, index, onUpdate, onRemove, canRemov
             <>
               <span className="member-card__plan-price">₹{member.plan.price}</span>
               <span className="member-card__plan-detail">
-                {member.plan.dailyData} GB/day · {member.plan.validity} days
+                {member.plan.dailyData} GB/day · {member.plan.validity} {t('card.days')}
               </span>
             </>
           ) : (
-            <span className="member-card__plan-detail">Select a plan</span>
+            <span className="member-card__plan-detail">{t('card.plan_label')}</span>
           )}
         </div>
         <ChevronDown
@@ -126,8 +128,8 @@ export default function MemberCard({ member, index, onUpdate, onRemove, canRemov
       {/* Monthly Cost */}
       {member.plan && (
         <div className="member-card__cost">
-          <span className="member-card__cost-label">Monthly cost</span>
-          <span className="member-card__cost-value">{formatCurrency(monthlyCost)}/mo</span>
+          <span className="member-card__cost-label">{t('card.monthly_cost')}</span>
+          <span className="member-card__cost-value">{formatCurrency(monthlyCost)}{t('card.mo')}</span>
         </div>
       )}
     </div>

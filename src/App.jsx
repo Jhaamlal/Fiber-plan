@@ -5,6 +5,7 @@ import MemberInput from './components/MemberInput';
 import FiberPlanPicker from './components/FiberPlanPicker';
 import SavingsResult from './components/SavingsResult';
 import Footer from './components/Footer';
+import { LanguageProvider } from './context/LanguageContext';
 import { jioPlans } from './data/plans';
 import { calculateTotalData, recommendPlan } from './utils/calculations';
 import { bsnlFiberPlans } from './data/plans';
@@ -54,38 +55,40 @@ export default function App() {
   }, []);
 
   return (
-    <div className="app">
-      <Header />
-      <StepIndicator currentStep={step} />
+    <LanguageProvider>
+      <div className="app">
+        <Header />
+        <StepIndicator currentStep={step} />
 
-      {step === 1 && (
-        <MemberInput
-          members={members}
-          onMembersChange={setMembers}
-          onNext={handleGoToStep2}
-        />
-      )}
+        {step === 1 && (
+          <MemberInput
+            members={members}
+            onMembersChange={setMembers}
+            onNext={handleGoToStep2}
+          />
+        )}
 
-      {step === 2 && (
-        <FiberPlanPicker
-          selectedPlanId={selectedPlanId}
-          onSelectPlan={setSelectedPlanId}
-          recommendedPlanId={recommendedPlanId}
-          onNext={handleGoToStep3}
-          onBack={() => handleBack(1)}
-        />
-      )}
+        {step === 2 && (
+          <FiberPlanPicker
+            selectedPlanId={selectedPlanId}
+            onSelectPlan={setSelectedPlanId}
+            recommendedPlanId={recommendedPlanId}
+            onNext={handleGoToStep3}
+            onBack={() => handleBack(1)}
+          />
+        )}
 
-      {step === 3 && (
-        <SavingsResult
-          members={members}
-          selectedPlanId={selectedPlanId}
-          onBack={() => handleBack(2)}
-          onReset={handleReset}
-        />
-      )}
+        {step === 3 && (
+          <SavingsResult
+            members={members}
+            selectedPlanId={selectedPlanId}
+            onBack={() => handleBack(2)}
+            onReset={handleReset}
+          />
+        )}
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }

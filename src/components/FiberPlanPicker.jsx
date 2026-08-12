@@ -1,5 +1,6 @@
 import { ArrowRight, ArrowLeft, Zap, Star, Check, Wifi } from 'lucide-react';
 import { bsnlFiberPlans } from '../data/plans';
+import { useLanguage } from '../context/LanguageContext';
 import { formatData } from '../utils/calculations';
 import './FiberPlanPicker.css';
 
@@ -10,11 +11,12 @@ export default function FiberPlanPicker({
   onNext,
   onBack,
 }) {
+  const { t } = useLanguage();
   return (
     <div className="fiber-picker">
       <div className="fiber-picker__intro">
         <Wifi size={20} className="fiber-picker__intro-icon" />
-        <p>Pick a BSNL Bharat Fiber plan for your home. One connection, everyone uses WiFi!</p>
+        <p>{t('picker.intro')}</p>
       </div>
 
       <div className="fiber-picker__list">
@@ -34,7 +36,7 @@ export default function FiberPlanPicker({
               <div className="fiber-card__badges">
                 {isRecommended && (
                   <span className="fiber-card__badge fiber-card__badge--recommended">
-                    <Star size={12} /> Best for you
+                    <Star size={12} /> {t('picker.best_for_you')}
                   </span>
                 )}
                 {plan.badge && (
@@ -46,10 +48,10 @@ export default function FiberPlanPicker({
 
               {/* Plan Header */}
               <div className="fiber-card__header">
-                <div className="fiber-card__name">{plan.name}</div>
+                <div className="fiber-card__name">{t(`plan.${plan.id}`)}</div>
                 <div className="fiber-card__price">
                   <span className="fiber-card__price-amount">₹{plan.price}</span>
-                  <span className="fiber-card__price-period">/month</span>
+                  <span className="fiber-card__price-period">{t('card.mo')}</span>
                 </div>
               </div>
 
@@ -72,7 +74,7 @@ export default function FiberPlanPicker({
               <div className="fiber-card__extras">
                 {plan.extras.map((extra, i) => (
                   <span key={i} className="fiber-card__extra">
-                    <Check size={12} /> {extra}
+                    <Check size={12} /> {extra === 'Unlimited Calls' ? t('general.unlimited_calls') : extra}
                   </span>
                 ))}
               </div>
@@ -92,14 +94,14 @@ export default function FiberPlanPicker({
       <div className="fiber-picker__nav">
         <button className="fiber-picker__back" onClick={onBack}>
           <ArrowLeft size={18} />
-          <span>Back</span>
+          <span>{t('picker.back')}</span>
         </button>
         <button
           className="fiber-picker__next"
           onClick={onNext}
           disabled={!selectedPlanId}
         >
-          <span>See Savings</span>
+          <span>{t('picker.next')}</span>
           <ArrowRight size={18} />
         </button>
       </div>

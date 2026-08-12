@@ -1,14 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import { formatCurrency } from '../utils/calculations';
+import { useLanguage } from '../context/LanguageContext';
 import './SavingsCounter.css';
 
 export default function SavingsCounter({ daily, monthly, yearly }) {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState('monthly');
   const [displayValue, setDisplayValue] = useState(0);
   const animationRef = useRef(null);
 
   const values = { daily, monthly, yearly };
-  const labels = { daily: 'Per Day', monthly: 'Per Month', yearly: 'Per Year' };
+  const labels = { daily: t('savings.daily'), monthly: t('savings.monthly'), yearly: t('savings.yearly') };
   const targetValue = values[activeTab];
 
   useEffect(() => {
@@ -55,14 +57,13 @@ export default function SavingsCounter({ daily, monthly, yearly }) {
 
       {/* Counter */}
       <div className={`savings-counter__value ${isPositive ? 'savings-counter__value--positive' : 'savings-counter__value--negative'}`}>
-        <span className="savings-counter__prefix">{isPositive ? 'You Save' : 'Extra Cost'}</span>
+        <span className="savings-counter__prefix">{isPositive ? t('counter.you_save') : t('counter.extra_cost')}</span>
         <span className="savings-counter__amount">{formatCurrency(displayValue)}</span>
-        <span className="savings-counter__period">{labels[activeTab].toLowerCase()}</span>
       </div>
 
       {isPositive && (
         <p className="savings-counter__note">
-          That's {formatCurrency(yearly)} saved every year! 🎉
+          {t('counter.thats')} {formatCurrency(yearly)} {t('counter.saved')} 🎉
         </p>
       )}
     </div>

@@ -1,11 +1,16 @@
+import { ShieldCheck } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import './Footer.css';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="footer">
-      <p>Prices as of August 2026. Pre-GST for BSNL Fiber.</p>
-      <p>Mobile plan prices include all taxes (MRP).</p>
-      <p>Verify latest plans on official operator websites before subscribing.</p>
+      <div className="footer__content">
+        <ShieldCheck size={16} className="footer__icon" />
+        <p>{t('footer.text')}</p>
+      </div>
     </footer>
   );
 }

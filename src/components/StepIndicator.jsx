@@ -1,13 +1,16 @@
 import { Check } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import './StepIndicator.css';
 
-const steps = [
-  { number: 1, label: 'Your Phones' },
-  { number: 2, label: 'Choose Plan' },
-  { number: 3, label: 'Your Savings' },
-];
-
 export default function StepIndicator({ currentStep }) {
+  const { t } = useLanguage();
+
+  const steps = [
+    { number: 1, label: t('step.1') },
+    { number: 2, label: t('step.2') },
+    { number: 3, label: t('step.3') },
+  ];
+
   return (
     <div className="step-indicator" role="navigation" aria-label="Progress">
       {steps.map((step, index) => (
