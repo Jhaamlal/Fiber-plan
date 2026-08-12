@@ -20,17 +20,6 @@ export function calculateTotalCurrentCost(members) {
   }, 0);
 }
 
-/**
- * Calculate the total recharge cost across all family members (exact sum of plan prices).
- * @param {Array} members - Array of { operator, planId, plan }
- * @returns {number} Total recharge cost in ₹
- */
-export function calculateTotalRechargeCost(members) {
-  return members.reduce((total, member) => {
-    if (!member.plan) return total;
-    return total + member.plan.price;
-  }, 0);
-}
 
 /**
  * Calculate savings comparing current spend vs BSNL Fiber.
