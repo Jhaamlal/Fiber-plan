@@ -35,6 +35,14 @@
   gap: var(--space-3);
 }
 
+@media (min-width: 768px) {
+  .member-input__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-4);
+  }
+}
+
 /* Add Button */
 .member-input__add {
   display: flex;

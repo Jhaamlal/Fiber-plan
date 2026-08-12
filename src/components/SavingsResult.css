@@ -6,6 +6,21 @@
   animation: fadeIn var(--transition-slow) ease;
 }
 
+.savings-result__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .savings-result__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    align-items: stretch;
+    gap: var(--space-5);
+  }
+}
+
 /* ─── Cost Breakdown ────────────────────────────────────────── */
 .savings-result__breakdown {
   background: var(--color-surface);

@@ -49,65 +49,67 @@ export default function SavingsResult({ members, selectedPlanId, onBack, onReset
         yearly={savings.yearly}
       />
 
-      {/* Cost Breakdown */}
-      <div className="savings-result__breakdown">
-        <h3 className="savings-result__section-title">
-          <IndianRupee size={16} />
-          {t('savings.cost_breakdown')}
-        </h3>
-        <div className="savings-result__cost-row">
-          <div className="savings-result__cost-item savings-result__cost-item--current">
-            <span className="savings-result__cost-item-label">
-              {members.length} {t('general.phones')} {t('savings.phones_current')}
-            </span>
-            <span className="savings-result__cost-item-value">
-              {formatCurrency(totalCurrentCost)}
-              <small>/mo</small>
-            </span>
-          </div>
-          <div className="savings-result__cost-vs">vs</div>
-          <div className="savings-result__cost-item savings-result__cost-item--bsnl">
-            <span className="savings-result__cost-item-label">
-              {t(`plan.${bsnlPlan.id}`)} {t('savings.fiber_plan')}
-            </span>
-            <span className="savings-result__cost-item-value">
-              {formatCurrency(bsnlPlan.price)}
-              <small>/mo</small>
-            </span>
+      <div className="savings-result__grid">
+        {/* Cost Breakdown */}
+        <div className="savings-result__breakdown">
+          <h3 className="savings-result__section-title">
+            <IndianRupee size={16} />
+            {t('savings.cost_breakdown')}
+          </h3>
+          <div className="savings-result__cost-row">
+            <div className="savings-result__cost-item savings-result__cost-item--current">
+              <span className="savings-result__cost-item-label">
+                {members.length} {t('general.phones')} {t('savings.phones_current')}
+              </span>
+              <span className="savings-result__cost-item-value">
+                {formatCurrency(totalCurrentCost)}
+                <small>/mo</small>
+              </span>
+            </div>
+            <div className="savings-result__cost-vs">vs</div>
+            <div className="savings-result__cost-item savings-result__cost-item--bsnl">
+              <span className="savings-result__cost-item-label">
+                {t(`plan.${bsnlPlan.id}`)} {t('savings.fiber_plan')}
+              </span>
+              <span className="savings-result__cost-item-value">
+                {formatCurrency(bsnlPlan.price)}
+                <small>/mo</small>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Speed Comparison */}
-      <SpeedComparison bsnlSpeed={bsnlPlan.speed} />
+        {/* Speed Comparison */}
+        <SpeedComparison bsnlSpeed={bsnlPlan.speed} />
 
-      {/* Data Comparison */}
-      <DataComparison
-        currentDataGB={totalCurrentData}
-        bsnlDataGB={bsnlPlan.dataLimit}
-      />
+        {/* Data Comparison */}
+        <DataComparison
+          currentDataGB={totalCurrentData}
+          bsnlDataGB={bsnlPlan.dataLimit}
+        />
 
-      {/* Bonus Benefits */}
-      <div className="savings-result__benefits">
-        <h3 className="savings-result__section-title">
-          <Wifi size={16} />
-          {t('savings.bonus_benefits')}
-        </h3>
-        <div className="savings-result__benefits-list">
-          <div className="savings-result__benefit">
-            <Tv size={16} />
-            <span>{t('savings.benefit_wifi')}</span>
-          </div>
-          <div className="savings-result__benefit">
-            <Phone size={16} />
-            <span>{t('savings.benefit_calls')}</span>
-          </div>
-          {bsnlPlan.extras.filter(e => e !== 'Unlimited Calls').length > 0 && (
+        {/* Bonus Benefits */}
+        <div className="savings-result__benefits">
+          <h3 className="savings-result__section-title">
+            <Wifi size={16} />
+            {t('savings.bonus_benefits')}
+          </h3>
+          <div className="savings-result__benefits-list">
             <div className="savings-result__benefit">
-              <Star size={16} className="savings-result__benefit-star" />
-              <span>{t('savings.benefit_ott')}: {bsnlPlan.extras.filter(e => e !== 'Unlimited Calls').join(', ')}</span>
+              <Tv size={16} />
+              <span>{t('savings.benefit_wifi')}</span>
             </div>
-          )}
+            <div className="savings-result__benefit">
+              <Phone size={16} />
+              <span>{t('savings.benefit_calls')}</span>
+            </div>
+            {bsnlPlan.extras.filter(e => e !== 'Unlimited Calls').length > 0 && (
+              <div className="savings-result__benefit">
+                <Star size={16} className="savings-result__benefit-star" />
+                <span>{t('savings.benefit_ott')}: {bsnlPlan.extras.filter(e => e !== 'Unlimited Calls').join(', ')}</span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
