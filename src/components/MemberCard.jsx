@@ -123,14 +123,11 @@ export default function MemberCard({ member, index, onUpdate, onRemove, canRemov
         </div>
       )}
 
-      {/* Recharge Cost */}
+      {/* Monthly Cost */}
       {member.plan && (
         <div className="member-card__cost">
-          <span className="member-card__cost-label">Recharge amount</span>
-          <span className="member-card__cost-value">
-            ₹{member.plan.price}
-            <span className="member-card__cost-validity"> / {member.plan.validity} days</span>
-          </span>
+          <span className="member-card__cost-label">Monthly cost</span>
+          <span className="member-card__cost-value">{formatCurrency(monthlyCost)}/mo</span>
         </div>
       )}
     </div>

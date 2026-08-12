@@ -1,6 +1,6 @@
 import { Plus, ArrowRight, Smartphone } from 'lucide-react';
 import MemberCard from './MemberCard';
-import { calculateTotalRechargeCost, formatCurrency } from '../utils/calculations';
+import { calculateTotalCurrentCost, formatCurrency } from '../utils/calculations';
 import './MemberInput.css';
 
 export default function MemberInput({ members, onMembersChange, onNext }) {
@@ -17,6 +17,7 @@ export default function MemberInput({ members, onMembersChange, onNext }) {
     ]);
   };
 
+
   const updateMember = (index, updatedMember) => {
     const updated = [...members];
     updated[index] = updatedMember;
@@ -28,7 +29,7 @@ export default function MemberInput({ members, onMembersChange, onNext }) {
     onMembersChange(updated);
   };
 
-  const totalCost = calculateTotalRechargeCost(members);
+  const totalCost = calculateTotalCurrentCost(members);
   const hasPlans = members.some((m) => m.plan !== null);
 
   return (
@@ -62,10 +63,10 @@ export default function MemberInput({ members, onMembersChange, onNext }) {
       <div className="member-input__total">
         <div className="member-input__total-row">
           <span className="member-input__total-label">
-            {members.length} phone{members.length > 1 ? 's' : ''} · Total recharge amount
+            {members.length} phone{members.length > 1 ? 's' : ''} · Total monthly spend
           </span>
           <span className="member-input__total-value">
-            {formatCurrency(totalCost)}
+            {formatCurrency(totalCost)}<span className="member-input__total-period">/mo</span>
           </span>
         </div>
       </div>
