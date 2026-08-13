@@ -1,44 +1,41 @@
 // ═══════════════════════════════════════════════════════════════
 // Telecom Plan Data — Updated August 2026
-// Sources: jio.com, airtel.in, myvi.in (verified via web search)
+// Sources: jio.com, airtel.in, myvi.in (verified Aug 2026)
 // ═══════════════════════════════════════════════════════════════
 
 // ─── Jio Prepaid Plans ─────────────────────────────────────────
+// Source: jio.com/selfcare/plans/mobility/prepaid-plans-list/
 export const jioPlans = [
-  { id: 'jio-199', price: 199, dailyData: 1.5, validity: 18, label: '₹199 · 1.5 GB/day · 18 days' },
-  { id: 'jio-209', price: 209, dailyData: 1,   validity: 22, label: '₹209 · 1 GB/day · 22 days' },
-  { id: 'jio-239', price: 239, dailyData: 1.5, validity: 22, label: '₹239 · 1.5 GB/day · 22 days' },
-  { id: 'jio-249', price: 249, dailyData: 1,   validity: 28, label: '₹249 · 1 GB/day · 28 days' },
-  { id: 'jio-299', price: 299, dailyData: 1.5, validity: 28, label: '₹299 · 1.5 GB/day · 28 days' },
-  { id: 'jio-349', price: 349, dailyData: 2,   validity: 28, label: '₹349 · 2 GB/day · 28 days' },
-  { id: 'jio-579', price: 579, dailyData: 1.5, validity: 56, label: '₹579 · 1.5 GB/day · 56 days' },
-  { id: 'jio-666', price: 666, dailyData: 1.5, validity: 70, label: '₹666 · 1.5 GB/day · 70 days' },
-  { id: 'jio-799', price: 799, dailyData: 1.5, validity: 84, label: '₹799 · 1.5 GB/day · 84 days' },
-  { id: 'jio-859', price: 859, dailyData: 2,   validity: 84, label: '₹859 · 2 GB/day · 84 days' },
+  { id: 'jio-329', price: 329, dailyData: 1.5, validity: 28, label: '₹329 · 1.5 GB/day · 28 days' },
+  { id: 'jio-349', price: 349, dailyData: 2,   validity: 28, label: '₹349 · 2 GB/day · 28 days (5G)' },
+  { id: 'jio-399', price: 399, dailyData: 2.5, validity: 28, label: '₹399 · 2.5 GB/day · 28 days (5G)' },
+  { id: 'jio-899', price: 899, dailyData: 2,   validity: 90, label: '₹899 · 2 GB/day · 90 days (5G)' },
+  { id: 'jio-999', price: 999, dailyData: 2,   validity: 98, label: '₹999 · 2 GB/day · 98 days (5G)' },
+  { id: 'jio-3599', price: 3599, dailyData: 2.5, validity: 365, label: '₹3599 · 2.5 GB/day · 365 days' },
 ];
 
 // ─── Airtel Prepaid Plans ──────────────────────────────────────
-// Note: Airtel discontinued ₹299, ₹579, ₹619, ₹649 plans in Aug 2026
-// ₹349 is now the entry-level daily data plan
+// Note: Airtel discontinued ₹299, ₹579, ₹619, ₹649 plans in Aug 2026.
+// Source: airtel.in/recharge-online
 export const airtelPlans = [
-  { id: 'airtel-349', price: 349, dailyData: 1.5, validity: 28, label: '₹349 · 1.5 GB/day · 28 days' },
-  { id: 'airtel-379', price: 379, dailyData: 2,   validity: 30, label: '₹379 · 2 GB/day · 30 days' },
-  { id: 'airtel-409', price: 409, dailyData: 2.5, validity: 28, label: '₹409 · 2.5 GB/day · 28 days' },
-  { id: 'airtel-449', price: 449, dailyData: 3,   validity: 28, label: '₹449 · 3 GB/day · 28 days' },
+  { id: 'airtel-349', price: 349, dailyData: 2,   validity: 28, label: '₹349 · 2 GB/day · 28 days (5G)' },
+  { id: 'airtel-409', price: 409, dailyData: 2.5, validity: 28, label: '₹409 · 2.5 GB/day · 28 days (5G)' },
+  { id: 'airtel-449', price: 449, dailyData: 3,   validity: 28, label: '₹449 · 3 GB/day · 28 days (5G)' },
   { id: 'airtel-899', price: 899, dailyData: 1.5, validity: 84, label: '₹899 · 1.5 GB/day · 84 days' },
-  { id: 'airtel-979', price: 979, dailyData: 2,   validity: 84, label: '₹979 · 2 GB/day · 84 days' },
+  { id: 'airtel-979', price: 979, dailyData: 2,   validity: 84, label: '₹979 · 2 GB/day · 84 days (5G)' },
+  { id: 'airtel-3599', price: 3599, dailyData: 2, validity: 365, label: '₹3599 · 2 GB/day · 365 days' },
+  { id: 'airtel-3999', price: 3999, dailyData: 2.5, validity: 365, label: '₹3999 · 2.5 GB/day · 365 days' },
 ];
 
 // ─── Vi (Vodafone Idea) Prepaid Plans ──────────────────────────
-// Source: myvi.in/prepaid/best-prepaid-plans (JSON-LD structured data)
+// Source: myvi.in/prepaid/best-prepaid-plans
 export const viPlans = [
   { id: 'vi-299',  price: 299,  dailyData: 1,   validity: 28,  label: '₹299 · 1 GB/day · 28 days' },
-  { id: 'vi-365',  price: 365,  dailyData: 2,   validity: 28,  label: '₹365 · 2 GB/day · 28 days (SuperHero)' },
-  { id: 'vi-450',  price: 450,  dailyData: 3,   validity: 28,  label: '₹450 · Unlimited · 28 days (NonStop Hero)' },
-  { id: 'vi-649',  price: 649,  dailyData: 2,   validity: 56,  label: '₹649 · 2 GB/day · 56 days (SuperHero)' },
-  { id: 'vi-790',  price: 790,  dailyData: 3,   validity: 56,  label: '₹790 · Unlimited · 56 days (NonStop Hero)' },
-  { id: 'vi-979',  price: 979,  dailyData: 2,   validity: 84,  label: '₹979 · 2 GB/day · 84 days (SuperHero)' },
-  { id: 'vi-1180', price: 1180, dailyData: 3,   validity: 84,  label: '₹1180 · Unlimited · 84 days (NonStop Hero)' },
+  { id: 'vi-349',  price: 349,  dailyData: 1.5, validity: 28,  label: '₹349 · 1.5 GB/day · 28 days (Hero Unlimited)' },
+  { id: 'vi-479',  price: 479,  dailyData: 2,   validity: 28,  label: '₹479 · 2 GB/day · 28 days (Hero Unlimited)' },
+  { id: 'vi-949',  price: 949,  dailyData: 1.5, validity: 84,  label: '₹949 · 1.5 GB/day · 84 days' },
+  { id: 'vi-979',  price: 979,  dailyData: 2,   validity: 84,  label: '₹979 · 2 GB/day · 84 days (Hero Unlimited)' },
+  { id: 'vi-3599', price: 3599, dailyData: 2,   validity: 365, label: '₹3599 · 2 GB/day · 365 days (Hero Unlimited)' },
 ];
 
 // ─── Operator metadata ────────────────────────────────────────
